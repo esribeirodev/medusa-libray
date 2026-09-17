@@ -1,9 +1,6 @@
 package com.medusatech.libray.dto;
 
-import com.medusatech.libray.entities.Author;
 import com.medusatech.libray.entities.Book;
-import com.medusatech.libray.entities.Category;
-import com.medusatech.libray.entities.Loan;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -19,12 +16,18 @@ public class BookDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @NotBlank
     private Long id;
+    @NotBlank
     private String title;
+    @NotBlank
     private String description;
+    @NotBlank
     private int yearPublication;
+    @NotBlank
     private Long totalQuantity;
     private Long quantityAvailable;
+    @NotBlank
     private Instant registrationDate;
 
     public BookDTO (Book entity){
