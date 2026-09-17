@@ -32,42 +32,35 @@ public class Book implements Serializable, Rentable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     @Column(nullable = false)
     private String title;
 
-    @NotBlank
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
 
-    @Min(100)
-    @Max(2030)
     @Column(nullable = false)
     private int yearPublication;
 
-    @NotNull
-    @PositiveOrZero
     @Column(nullable = false)
     private Long totalQuantity;
 
     @Setter(AccessLevel.NONE)
-    @NotNull
-    @PositiveOrZero
     @Column(nullable = false)
     private Long quantityAvailable;
 
     @Setter(AccessLevel.NONE)
-    @NotNull
     @Column(nullable = false)
     private Instant registrationDate;
 
     @ManyToMany
+    @Setter(AccessLevel.NONE)
     @JoinTable(name = "tb_book_author",
     joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
     @ManyToMany
+    @Setter(AccessLevel.NONE)
     @JoinTable(name = "tb_book_category",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))

@@ -1,5 +1,6 @@
-package com.medusatech.libray.entities;
+package com.medusatech.libray.dto;
 
+import com.medusatech.libray.entities.Loan;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -12,42 +13,30 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "tb_reader")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Reader implements Serializable {
+public class ReaderDTO implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
+    @NotNull
     private Long id;
 
-    @Column(nullable = false)
     @NotBlank
     private String name;
 
-    @Column(nullable = false)
     @NotBlank
     private String email;
 
     @NotNull
-    @Column(nullable = false)
     private LocalDate birthDate;
 
     @NotNull
-    @Column(nullable = false)
     @Setter(AccessLevel.NONE)
     private Instant creationDate;
 
-
-    @OneToMany(mappedBy = "reader")
     @Setter(AccessLevel.NONE)
-    private List<Loan> loans = new ArrayList<>();
+    private List<LoanDTO> loans = new ArrayList<>();
+
 }

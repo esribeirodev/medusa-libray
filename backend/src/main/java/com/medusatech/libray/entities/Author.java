@@ -26,7 +26,6 @@ public class Author implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String name;
 
     @ManyToMany(mappedBy = "authors")

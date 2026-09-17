@@ -18,16 +18,26 @@ public class BookDTO implements Serializable {
 
     @NotBlank
     private Long id;
+
     @NotBlank
     private String title;
+
     @NotBlank
     private String description;
+
+    @Min(100)
+    @Max(2030)
     @NotBlank
     private int yearPublication;
-    @NotBlank
+
+    @NotNull
+    @PositiveOrZero
     private Long totalQuantity;
+
+    @Setter(AccessLevel.NONE)
     private Long quantityAvailable;
-    @NotBlank
+
+    @NotNull
     private Instant registrationDate;
 
     public BookDTO (Book entity){

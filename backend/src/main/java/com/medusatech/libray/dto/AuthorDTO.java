@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +22,5 @@ public class AuthorDTO implements Serializable {
     @NotBlank
     private String name;
 
+    private Set<BookDTO> books = new HashSet<>();
 }

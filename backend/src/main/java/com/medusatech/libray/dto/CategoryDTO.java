@@ -3,6 +3,8 @@ package com.medusatech.libray.dto;
 import com.medusatech.libray.entities.Book;
 import com.medusatech.libray.entities.Category;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serial;
@@ -18,8 +20,13 @@ public class CategoryDTO implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @NotNull
     private Long id;
+
+    @NotBlank
     private String name;
+
+    @Setter(AccessLevel.NONE)
     private Set<BookDTO> books = new HashSet<>();
 
     public CategoryDTO(Category entity) {
